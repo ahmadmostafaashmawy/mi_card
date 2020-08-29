@@ -29,7 +29,7 @@ class _MiCardState extends State<MiCard> {
     }
   }
 
-  Future<void> _makePhoneCall(String url) async {
+  Future<void> _makePhoneCallAndEmail(String url) async {
     if (await canLaunch(url)) {
       await launch(url);
     } else {
@@ -92,7 +92,7 @@ class _MiCardState extends State<MiCard> {
                       onTap: () => {
                         print('phone call is clicked'),
                         setState(() {
-                          _launched = _makePhoneCall('tel:$_phone');
+                          _launched = _makePhoneCallAndEmail('tel:$_phone');
                         }),
                       },
                       leading: Icon(
@@ -116,7 +116,7 @@ class _MiCardState extends State<MiCard> {
                     child: ListTile(
                       onTap: () => {
                         setState(() {
-                          _launched = _makePhoneCall('mailto:$_email');
+                          _launched = _makePhoneCallAndEmail('mailto:$_email');
                         }),
                       },
                       leading: Icon(
